@@ -1,0 +1,77 @@
+.btn {
+  padding: 0 16px;
+  min-width: 64px;
+  height: 36px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  outline: none;
+  transition: opacity 0.25s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    color: var(--onSecondary, #000000) !important;
+    border-color: var(--disabled, #e5e9f2) !important;
+    background-color: var(--disabled, #e5e9f2) !important;
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  & span {
+    color: inherit !important;
+  }
+}
+
+.btn__primary {
+  &.btn__fill {
+    color: var(--onPrimary, #ffffff);
+    border-color: var(--primary, #6200ee);
+    background-color: var(--primary, #6200ee);
+  }
+  &.btn__outline {
+    color: var(--primary, #6200ee);
+    border-color: var(--primary, #6200ee);
+    background-color: var(--background, #ffffff);
+  }
+  &.btn__text {
+    color: var(--primary, #6200ee);
+    border-color: transparent;
+    background-color: transparent;
+  }
+}
+
+.btn__secondary {
+  &.btn__fill {
+    color: var(--onSecondary, #000000);
+    border-color: var(--secondary, #41b883);
+    background-color: var(--secondary, #41b883);
+  }
+  &.btn__outline {
+    color: var(--secondary, #41b883);
+    border-color: var(--secondary, #41b883);
+    background-color: var(--background, #ffffff);
+  }
+  &.btn__text {
+    color: var(--secondary, #41b883);
+    border-color: transparent;
+    background-color: transparent;
+  }
+}
+
+.btn--icon {
+  margin-right: 8px;
+}
