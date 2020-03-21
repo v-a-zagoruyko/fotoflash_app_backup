@@ -1,12 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
+import App from "./App";
 
-class App extends React.Component {
-  render() {
-    return <div className="App">123</div>;
-  }
-}
+import "styles/style.scss";
 
 ReactDOM.render(
   <React.StrictMode>
