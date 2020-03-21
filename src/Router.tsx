@@ -5,7 +5,7 @@ import {
   Redirect,
   Route
 } from "react-router-dom";
-import { Home } from "pages";
+import { Home, News, Equipment, Default } from "pages";
 import { history } from "utils";
 
 const UnauthorizedRoute = ({ component: Component, ...rest }: any) => (
@@ -38,6 +38,9 @@ const Router = () => (
   <ReactRouter history={history}>
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/news" component={News} />
+      <Route exact path="/equipment" component={Equipment} />
+      <Route component={Default} />
     </Switch>
   </ReactRouter>
 );
