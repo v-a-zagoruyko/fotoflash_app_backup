@@ -1,0 +1,43 @@
+@import "styles/mixins";
+
+.icon {
+  color: var(--primary, #6200ee);
+}
+
+.icon--instagram {
+  @include fa-icon;
+
+  &:after {
+    font-size: 18px;
+    @include fa-content($fa-var-instagram, "Brands");
+  }
+}
+
+.icon--vk {
+  @include fa-icon;
+
+  &:after {
+    font-size: 18px;
+    @include fa-content($fa-var-vk, "Brands");
+  }
+}
+
+.icon--spinner {
+  @include fa-icon;
+
+  &:after {
+    font-size: 18px;
+    @include fa-content($fa-var-circle-notch);
+  }
+
+  animation: spin 1s infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
