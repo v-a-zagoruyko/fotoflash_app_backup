@@ -8,6 +8,7 @@
 
 # development
 .vscode
+.env
 
 # production
 /build
