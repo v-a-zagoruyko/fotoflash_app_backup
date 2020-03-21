@@ -1,0 +1,23 @@
+@import "css-vars/css-vars";
+
+$css-vars-use-native: true;
+
+$theme-colors: (
+  "primary": #bb86fc,
+  "secondary": #03dac6,
+  "disabled": #e5e9f2,
+  "background": #121212,
+  "surface": #1e1e1e,
+  "error": #b00020,
+  "onPrimary": #000000,
+  "onSecondary": #000000,
+  "onBackground": #ffffff,
+  "onSurface": #ffffff,
+  "onError": #000000
+);
+
+:export {
+  @each $key, $value in $theme-colors {
+    #{unquote($key)}: $value;
+  }
+}
