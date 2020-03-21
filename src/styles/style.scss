@@ -1,10 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto:300,400,500,700&display=swap&subset=cyrillic");
+
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
+@import "styles/mixins";
+
 *,
 *:before,
 *:after {
+  font-family: "Roboto", sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -49,7 +54,7 @@ audio,
 video {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  color: var(--onBackground);
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
@@ -132,4 +137,58 @@ textarea {
 
 details summary::-webkit-details-marker {
   display: none;
+}
+
+.general--title {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+
+  @include respond-to(xs) {
+    margin-bottom: 4px;
+    font-size: 22px;
+  }
+
+  @include respond-to(sm) {
+    margin-bottom: 4px;
+    font-size: 24px;
+  }
+
+  @include respond-to(md) {
+    margin-bottom: 6px;
+    font-size: 26px;
+  }
+
+  @include respond-to(lg) {
+    margin-bottom: 6px;
+    font-size: 28px;
+  }
+}
+
+.general--text {
+  font-family: "Roboto", sans-serif;
+  opacity: 0.8;
+
+  @include respond-to(xs) {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  @include respond-to(sm) {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  @include respond-to(md) {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+  }
+
+  @include respond-to(lg) {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+  }
 }
