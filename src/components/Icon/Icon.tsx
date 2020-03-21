@@ -4,7 +4,12 @@ import styles from "./Icon.module.scss";
 
 const cx = cn.bind(styles);
 
-export type IconCode = "instagram" | "vk" | "spinner";
+export type IconCode =
+  | "square"
+  | "square-checked"
+  | "instagram"
+  | "vk"
+  | "spinner";
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   /**

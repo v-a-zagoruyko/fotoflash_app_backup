@@ -4,12 +4,21 @@
   color: var(--primary, #6200ee);
 }
 
-.icon--instagram {
+.icon--square {
   @include fa-icon;
 
   &:after {
     font-size: 18px;
-    @include fa-content($fa-var-instagram, "Brands");
+    @include fa-content($fa-var-square);
+  }
+}
+
+.icon--square-checked {
+  @include fa-icon;
+
+  &:after {
+    font-size: 18px;
+    @include fa-content($fa-var-check-square);
   }
 }
 
