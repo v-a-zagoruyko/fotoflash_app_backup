@@ -1,0 +1,63 @@
+.badge {
+  padding: 0 16px;
+  min-width: 64px;
+  height: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  outline: none;
+  transition: opacity 0.25s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+
+  & span {
+    color: inherit !important;
+  }
+}
+
+.badge__primary {
+  color: var(--onPrimary, #ffffff);
+  border-color: var(--primary, #6200ee);
+  background-color: var(--primary, #6200ee);
+
+  &:not(.badge__active) {
+    color: var(--primary, #6200ee);
+    border-color: var(--primary, #6200ee);
+    background-color: transparent;
+  }
+}
+
+.badge__secondary {
+  color: var(--onSecondary, #000000);
+  border-color: var(--secondary, #41b883);
+  background-color: var(--secondary, #41b883);
+
+  &:not(.badge__active) {
+    color: var(--primary, #41b883);
+    border-color: var(--primary, #41b883);
+    background-color: transparent;
+  }
+}
+
+.badge__disabled {
+  opacity: 0.3 !important;
+  cursor: not-allowed;
+}
+
+.badge--icon {
+  margin-right: 8px;
+}
