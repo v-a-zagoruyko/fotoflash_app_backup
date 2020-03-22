@@ -1,0 +1,131 @@
+@import "styles/mixins";
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0px -8px;
+
+  @include respond-to(xs) {
+    margin: 0;
+
+    & > * {
+      width: 100%;
+      margin: 8px 0;
+    }
+  }
+
+  @include respond-to(sm) {
+    & > * {
+      width: calc(50% - 16px);
+      margin: 8px;
+    }
+  }
+
+  @include respond-to(md) {
+    & > * {
+      width: calc(25% - 16px);
+      margin: 8px;
+    }
+  }
+
+  @include respond-to(lg) {
+    & > * {
+      width: calc(20% - 16px);
+      margin: 8px;
+    }
+  }
+}
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.item {
+  overflow: hidden;
+  padding: 28px 4%;
+  background-color: var(--surface);
+
+  @include respond-to(xs) {
+    width: 90%;
+    height: 80vh;
+  }
+
+  @include respond-to(sm) {
+    width: 70%;
+    height: 80vh;
+  }
+
+  @include respond-to(md) {
+    width: 60%;
+    height: 80vh;
+  }
+
+  @include respond-to(lg) {
+    width: 50%;
+    height: 80vh;
+  }
+}
+
+.item--title {
+  margin-bottom: 12px;
+  font-family: "Oswald", sans-serif;
+  color: var(--onSurface);
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.item--subtitle {
+  margin-bottom: 12px;
+  color: var(--onSurface);
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.item--text {
+  color: var(--onSurface);
+  opacity: 0.8;
+
+  @include respond-to(xs) {
+    overflow-y: auto;
+    height: calc(80vh - 150px - 140px);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  @include respond-to(sm) {
+    overflow-y: auto;
+    height: calc(80vh - 350px - 140px);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  @include respond-to(md) {
+    overflow-y: auto;
+    height: calc(80vh - 300px - 140px);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+  }
+
+  @include respond-to(lg) {
+    overflow-y: auto;
+    height: calc(80vh - 400px - 140px);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+  }
+}
