@@ -1,14 +1,13 @@
 import React from "react";
 import cn from "classnames/bind";
 import { Button } from "components";
-import { history } from "utils";
 import styles from "./Default.module.scss";
 
 const cx = cn.bind(styles);
 
 class Default extends React.Component {
   redirectToHome = () => {
-    history.push("/");
+    window.location.replace("/");
   };
 
   render() {
