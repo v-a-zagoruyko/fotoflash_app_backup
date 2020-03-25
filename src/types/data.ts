@@ -7,8 +7,8 @@ export namespace Data {
     date: Dayjs;
     coverUrl: string;
     origin: {
-      source: string;
-      link: string;
+      source?: string;
+      link?: string;
     };
   };
 
@@ -19,6 +19,36 @@ export namespace Data {
     coverUrl: string;
     cost: {
       hour: number;
+      day: number;
     };
+  };
+
+  export type Location = {
+    title: string;
+    html: string;
+    coverUrl: string;
+    cost: {
+      hour: number;
+      atLate: number;
+      atWeekends: number;
+      night: number;
+      nightHalf: number;
+    };
+    specialCost: {
+      from: Dayjs;
+      to: Dayjs;
+      cost: {
+        hour: number;
+        atLate: number;
+        atWeekends: number;
+        night: number;
+        nightHalf: number;
+      };
+    }[];
+    equipment: {
+      equipment: Equipment;
+      number: Number;
+    }[];
+    gallery: string[];
   };
 }
