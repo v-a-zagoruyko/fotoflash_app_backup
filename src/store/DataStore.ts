@@ -60,7 +60,7 @@ export class DataStore {
         return {
           ...x,
           type: x.type.title,
-          cost: { hour: x.hour }
+          cost: { hour: x.hour, day: x.day }
         };
       });
 
