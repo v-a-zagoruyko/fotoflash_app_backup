@@ -2,6 +2,9 @@ import { observable, action } from "mobx";
 import axios from "axios";
 import dayjs from "dayjs";
 import { Data } from "types/data";
+import "dayjs/locale/ru";
+
+dayjs.locale("ru");
 
 export class DataStore {
   @observable news: { data?: Data.News[]; isLoading: boolean } = {
