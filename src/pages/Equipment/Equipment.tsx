@@ -2,9 +2,9 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 import cn from "classnames/bind";
 import { DataStore } from "store";
-import { Data } from "types/data";
 import { General } from "layouts";
-import { Card } from "components";
+import { Card, Badge, Icon } from "components";
+import { Data } from "types/data";
 import styles from "./Equipment.module.scss";
 
 const cx = cn.bind(styles);
@@ -15,16 +15,28 @@ interface Props {
 
 interface State {
   item: Data.Equipment | null;
+  selectedTypes: string[];
 }
 
 @inject("dataStore")
 @observer
 class Equipment extends React.Component<Props, State> {
-  state: State = { item: null };
+  state: State = { item: null, selectedTypes: [] };
 
   componentDidMount() {
     this.props.dataStore.fetchEquipment();
   }
+
+  toggleType = (type: string) => {
+    const { selectedTypes } = this.state;
+    console.log(selectedTypes);
+
+    this.setState({
+      selectedTypes: selectedTypes.includes(type)
+        ? selectedTypes.filter(x => x !== type)
+        : [...selectedTypes, type]
+    });
+  };
 
   handleOpenItem = (item: Data.Equipment) => {
     this.setState({ item });
@@ -34,19 +46,30 @@ class Equipment extends React.Component<Props, State> {
     this.setState({ item: null });
   };
 
-  Item = () => {
-    const { title, type, html } = this.state.item!;
+  Types = () => {
+    const {
+      equipment: { data }
+    } = this.props.dataStore;
+    const { selectedTypes } = this.state;
+    const typesList = Array.from(new Set(data!.map(x => x.type)));
 
     return (
-      <div className={cx("container")} onClick={this.handleCloseItem}>
-        <article className={cx("item")}>
-          <h3 className={cx("item--title")}>{title}</h3>
-          <p className={cx("item--subtitle")}>{type}</p>
-          <p
-            className={cx("item--text")}
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-        </article>
+      <div className={cx("types")}>
+        {typesList.map((item, idx) => {
+          const isActive = selectedTypes.includes(item);
+
+          return (
+            <Badge
+              key={`type${idx}`}
+              onClick={() => this.toggleType(item)}
+              className={cx("types--item")}
+              color="primary"
+              isActive={isActive}
+            >
+              {item}
+            </Badge>
+          );
+        })}
       </div>
     );
   };
@@ -55,12 +78,18 @@ class Equipment extends React.Component<Props, State> {
     const {
       equipment: { data, isLoading }
     } = this.props.dataStore;
-    const { item } = this.state;
+    const { selectedTypes } = this.state;
+    const equipmentList = data?.filter(item => {
+      if (selectedTypes.length > 0) {
+        return selectedTypes.includes(item.type);
+      }
+      return item;
+    });
 
     return (
       <General title="Оборудование" isLoading={isLoading}>
-        <h1 className={cx("general--title")}>Оборудование</h1>
-        <p className={cx("general--text")}>
+        <h1 className={cx("title")}>Оборудование</h1>
+        <p className={cx("text")}>
           Хорошее оборудование - залог хорошей фотографии. В естественных
           условиях у фотографа нет возможности повлиять на солнечный свет, он
           может только подстроиться под имеющиеся условия, далеко не всегда
@@ -69,24 +98,33 @@ class Equipment extends React.Component<Props, State> {
           тарелка к имеющемуся моноблоку? На все эти и множество других вопросов
           у нас есть ответ.
         </p>
+        {data && this.Types()}
         <div className={cx("grid")}>
-          {data?.map((item, idx) => {
-            const { title, type, coverUrl } = item;
+          {equipmentList?.map((item, idx) => {
+            const { title, html, coverUrl } = item;
 
             return (
-              <Card
-                key={`equipment${idx}`}
-                onPrimary={() => this.handleOpenItem(item)}
-                design="vertical"
-                title={title}
-                subtitle={type}
-                image={coverUrl}
-                primary="Подробнее"
-              />
+              <div className={cx("grid--item", "card")}>
+                <img className={cx("card--img")} src={coverUrl} alt={title} />
+                <h6 className={cx("card--title")}>{title}</h6>
+                <p className={cx("card--text")}>{html}</p>
+              </div>
             );
+
+            // return (
+            //   <Card
+            //     key={`equipment${idx}`}
+            //     className={cx("grid--item")}
+            //     onPrimary={() => this.handleOpenItem(item)}
+            //     design="vertical"
+            //     title={title}
+            //     subtitle={type}
+            //     image={coverUrl}
+            //     primary="Подробнее"
+            //   />
+            // );
           })}
         </div>
-        {item && this.Item()}
       </General>
     );
   }
