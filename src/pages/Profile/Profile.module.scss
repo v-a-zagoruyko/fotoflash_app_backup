@@ -1,0 +1,152 @@
+@import "styles/mixins";
+
+.profile-nav {
+  margin-bottom: 32px;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+
+  @include respond-to(below-md) {
+    display: none;
+  }
+
+  &--link {
+    margin: 2px 0;
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &--icon {
+    margin: 0 8px;
+    color: inherit;
+  }
+}
+
+.profile {
+  &--bio {
+    margin-bottom: 32px;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include respond-to(below-md) {
+      & > div:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+
+  &--face {
+    margin-right: 12px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+  }
+
+  &--name {
+    margin-bottom: 0 !important;
+  }
+
+  &--bonus {
+    margin-bottom: 0 !important;
+  }
+
+  &--bonus__SILVER::before {
+    color: #c0c0c0;
+  }
+
+  &--bonus__GOLD::before {
+    color: #ffd700;
+  }
+
+  &--bonus__PLATINUM::before {
+    color: #e5e4e2;
+  }
+
+  &--bonus::before {
+    content: "⬤\00a0\00a0\00a0";
+    font-size: 16px;
+  }
+
+  &--btn {
+    width: 100%;
+  }
+}
+
+.rent {
+  margin-top: 20px;
+
+  &--item {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    outline: none;
+    background-color: var(--surface);
+    cursor: pointer;
+  }
+
+  &--block {
+    display: inline-flex;
+
+    @include respond-to(below-md) {
+      width: 100%;
+    }
+
+    @include respond-to(from-md) {
+      width: 75%;
+    }
+  }
+
+  &--title {
+    margin-bottom: 0 !important;
+
+    @include respond-to(below-md) {
+      width: 100%;
+    }
+
+    @include respond-to(from-md) {
+      width: 25%;
+    }
+  }
+
+  &--text {
+    margin-bottom: 0 !important;
+    font-size: 10px !important;
+
+    @include respond-to(below-md) {
+      margin-top: 10px;
+      width: 33%;
+      text-align: center;
+    }
+
+    @include respond-to(from-md) {
+      width: 25%;
+    }
+
+    & span {
+      margin-top: 4px;
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+    }
+  }
+
+  &--info {
+    padding: 24px 0;
+  }
+}
