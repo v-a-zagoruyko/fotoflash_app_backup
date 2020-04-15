@@ -24,9 +24,9 @@ export namespace Data {
   };
 
   export type Location = {
+    id: number;
     title: string;
     html: string;
-    coverUrl: string;
     cost: {
       hour: number;
       atLate: number;
@@ -50,5 +50,17 @@ export namespace Data {
       number: Number;
     }[];
     gallery: string[];
+  };
+
+  export type Rent = {
+    location?: Location;
+    // photograph: Dayjs;
+    date: Dayjs;
+    start: Dayjs;
+    end: Dayjs;
+    equipment?: {
+      item: Equipment;
+      number: number;
+    };
   };
 }
