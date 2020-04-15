@@ -1,0 +1,38 @@
+@import "styles/mixins";
+
+.grid {
+  margin: 16px -8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  @include respond-to(xs) {
+    margin: 0;
+  }
+}
+
+.grid--item {
+  @include respond-to(xs) {
+    margin: 8px 0;
+    width: 100%;
+  }
+
+  @include respond-to(sm) {
+    margin: 8px;
+    width: calc(50% - 16px);
+  }
+
+  @include respond-to(md) {
+    margin: 8px;
+    width: calc(33% - 16px);
+  }
+
+  @include respond-to(lg) {
+    margin: 8px;
+    width: calc(33% - 16px);
+  }
+}
+
+.container {
+  padding: 24px 0;
+}
