@@ -1,0 +1,88 @@
+@import "styles/mixins";
+
+.grid {
+  padding: 36px 2% 50px 2%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  @include respond-to(xs) {
+    margin: 0;
+    padding: 0 0 28px 0;
+  }
+}
+
+.grid--item {
+  margin-bottom: 12px;
+  @include respond-to(xs) {
+    width: 50%;
+  }
+
+  @include respond-to(sm) {
+    width: 20%;
+  }
+
+  @include respond-to(md) {
+    width: 20%;
+  }
+
+  @include respond-to(lg) {
+    width: 20%;
+  }
+}
+
+.grid--item__large {
+  margin-bottom: 12px;
+
+  @include respond-to(xs) {
+    width: 100%;
+  }
+
+  @include respond-to(sm) {
+    width: 80%;
+  }
+
+  @include respond-to(md) {
+    width: 40%;
+  }
+
+  @include respond-to(lg) {
+    width: 40%;
+  }
+}
+
+.column {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+
+  @include respond-to(xs) {
+    padding: 0 18px;
+  }
+
+  &--title {
+    margin-bottom: 4px;
+    font-family: "Rubik", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 150%;
+    text-transform: uppercase;
+  }
+
+  &--text {
+    margin: 2px 0;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  &--link {
+    margin: 2px 0;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  &--icon {
+    padding: 8px 8px 8px 0;
+    color: var(--onBackground);
+  }
+}
