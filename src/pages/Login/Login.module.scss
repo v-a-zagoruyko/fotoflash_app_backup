@@ -1,0 +1,25 @@
+.container {
+  &--title {
+    margin: 12px 0;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  &--link {
+    margin-bottom: 6px;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--secondary);
+      text-decoration: underline;
+    }
+  }
+
+  &--button {
+    margin-top: 18px;
+    width: 100%;
+  }
+}
