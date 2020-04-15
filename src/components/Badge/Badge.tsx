@@ -25,19 +25,30 @@ interface Props extends React.HTMLAttributes<HTMLSpanElement> {
  */
 class Badge extends React.PureComponent<Props> {
   render() {
-    const { className, color, children, isActive, isDisabled } = this.props;
+    const {
+      onClick,
+      className,
+      color,
+      children,
+      isActive,
+      isDisabled
+    } = this.props;
 
     return (
       <span
+        onClick={onClick}
         className={cx("badge", `badge__${color}`, className || undefined, {
           badge__active: isActive,
           badge__disabled: isDisabled
         })}
       >
-        <Icon
+        {/* <Icon
           className={cx("badge--icon")}
           code={isActive ? "square-checked" : "square"}
-        />
+        /> */}
+        {isActive && (
+          <Icon className={cx("badge--icon")} code="square-checked" />
+        )}
         {children}
       </span>
     );
