@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto:300,400,500,700&display=swap&subset=cyrillic");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Rubik:700&display=swap&subset=cyrillic");
 
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+// @import "~@fortawesome/fontawesome-free/scss/regular.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
@@ -13,6 +14,11 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 html,
@@ -139,57 +145,190 @@ details summary::-webkit-details-marker {
   display: none;
 }
 
-.general--title {
-  font-family: "Oswald", sans-serif;
+/*
+  Global packages styles
+*/
+
+.Toastify__toast--success {
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
   text-transform: uppercase;
+  color: var(--onSecondary) !important;
+  background-color: var(--secondary) !important;
+}
 
-  @include respond-to(xs) {
-    margin-bottom: 4px;
-    font-size: 22px;
+.Toastify__toast--error {
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--onError) !important;
+  background-color: var(--error) !important;
+}
+
+/*
+  Global packages styles
+*/
+
+.general-container {
+  position: relative;
+  min-height: 100vh;
+
+  @include respond-to(below-lg) {
+    padding: 12px 6%;
   }
 
-  @include respond-to(sm) {
-    margin-bottom: 4px;
-    font-size: 24px;
-  }
-
-  @include respond-to(md) {
-    margin-bottom: 6px;
-    font-size: 26px;
-  }
-
-  @include respond-to(lg) {
-    margin-bottom: 6px;
-    font-size: 28px;
+  @include respond-to(from-lg) {
+    padding: 12px 17%;
   }
 }
 
-.general--text {
-  margin-bottom: 12px;
+.block {
+  margin-top: 48px;
+  display: inline-flex;
+
+  &__unpadded {
+    margin-top: 0;
+  }
+
+  & > :first-child {
+    padding-left: 0;
+  }
+
+  & button {
+    margin-top: 14px;
+  }
+
+  @include respond-to(below-md) {
+    flex-direction: column;
+
+    &--img {
+      width: 100%;
+      object-fit: cover;
+      object-position: center center;
+      order: 1;
+    }
+
+    &--text {
+      padding: 12px 0;
+      order: 2;
+    }
+  }
+
+  @include respond-to(from-md) {
+    flex-direction: row;
+
+    &--img {
+      width: 40%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    &--text {
+      padding: 6px 32px;
+    }
+  }
+}
+
+.title {
+  margin-bottom: 10px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 700;
+  line-height: 150%;
+  text-transform: uppercase;
+
+  &__padded {
+    margin-top: 22px;
+  }
+
+  @include respond-to(xs) {
+    font-size: 20px;
+  }
+
+  @include respond-to(sm) {
+    font-size: 18px;
+  }
+
+  @include respond-to(md) {
+    font-size: 18px;
+  }
+
+  @include respond-to(lg) {
+    font-size: 22px;
+  }
+}
+
+.text {
   font-family: "Roboto", sans-serif;
-  opacity: 0.8;
+  font-weight: 400;
+  line-height: 150%;
+  opacity: 0.75;
 
   @include respond-to(xs) {
     font-size: 14px;
-    font-weight: 300;
-    line-height: 24px;
   }
 
   @include respond-to(sm) {
     font-size: 14px;
-    font-weight: 300;
-    line-height: 24px;
   }
 
   @include respond-to(md) {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 26px;
+    font-size: 14px;
   }
 
   @include respond-to(lg) {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 26px;
+    font-size: 14px;
   }
+}
+
+.link {
+  color: var(--onSurface);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal--overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.slide-animation-enter {
+  bottom: -300px;
+}
+
+.slide-animation-enter.slide-animation-enter-active {
+  bottom: 50px;
+  transition: bottom 0.5s linear;
+}
+
+.slide-animation-exit {
+  bottom: 50px;
+}
+
+.slide-animation-exit.slide-animation-exit-active {
+  bottom: -300px;
+  transition: bottom 0.5s linear;
 }
